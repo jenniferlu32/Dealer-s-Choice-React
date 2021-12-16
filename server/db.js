@@ -1,8 +1,13 @@
-const { Sequelize, Model, STRING, BOOLEAN, ENUM } = require('Sequelize');
+const { Sequelize, Model, STRING, BOOLEAN, ENUM, INTEGER } = require('Sequelize');
 const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/todo', { logging: false });
 
 class Project extends Model {};
 Project.init({
+  id: {
+    type: INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
   project: {
     type: STRING,
     allowNull: false

@@ -4,10 +4,13 @@ const router = require('./routes')
 const app = express();
 const path = require('path');
 
+app.use(express.json()); //req.body
 app.use('/api', router);
 
+app.use('/dist', express.static(path.join(__dirname, '..', './dist')));
+
 app.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '..', 'src', 'index.html'))
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
 });
 
 const init = async() => {
